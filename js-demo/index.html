@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+    <h1>Multiplicative Weights Update Algorithm Demo</h1>
+</header>
+<div class="content">
+    <p>There are four experts, and you get to pick the outcomes of each event. The Multiplicate Weights Update Algorithm will try to find the best expert.</p>
+    <table>
+        <tr>
+        <th>Experts: </th>
+            <td>Alice</td>
+            <td>Bob</td>
+            <td>Chadwick</td>
+            <td>Eve</td>
+        </tr>
+        <th>MWUA Weights: </th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <div>
+        <label htmlFor="calcBtn"></label>
+        <button id="calcBtn">Calculate next pick</button>
+    </div>
+    <h2>Current Best: <span id="best"></span></h2>
+    <h2>MWUA's hypothesized best: <span id="mwua_best"></span></h2>
+</div>
+<script src="build/main.bundle.js"></script>
+</body>
+</html>
