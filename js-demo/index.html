@@ -11,13 +11,19 @@
 </header>
 <div class="content">
     <p>There are four experts, and you get to pick the outcomes of each event. The Multiplicate Weights Update Algorithm will try to find the best expert.</p>
-    <table>
-        <tr>
+    <table id="summary">
+        <tr class='header'>
         <th>Experts: </th>
             <td>Alice</td>
             <td>Bob</td>
             <td>Chadwick</td>
             <td>Eve</td>
+        </tr>
+        <th id="cumulativeRewards">Cumulative rewards: </th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
         </tr>
         <th>MWUA Weights: </th>
             <td></td>
@@ -26,12 +32,29 @@
             <td></td>
         </tr>
     </table>
+    <table id="rewards">
+        <tr class='header'>
+            <th>Experts:</th>
+            <td>Alice</td>
+            <td>Bob</td>
+            <td>Chadwick</td>
+            <td>Eve</td>
+        </tr>
+        <tr class="chosenRewards">
+        <th id="round0">Round 1: </th>
+            <td><input>1</input></td>
+            <td><input>1</input></td>
+            <td><input>1</input></td>
+            <td><input>1</input></td>
+        </tr>
+        // Extra rows go here
+    </table>
+    <h2>For this round I pick: <span id="chosenObject"></span></h2>
+    <h2>MWUA's hypothesized best: <span id="mwuaBest"></span></h2>
     <div>
         <label htmlFor="calcBtn"></label>
         <button id="calcBtn">Calculate next pick</button>
     </div>
-    <h2>Current Best: <span id="best"></span></h2>
-    <h2>MWUA's hypothesized best: <span id="mwua_best"></span></h2>
 </div>
 <script src="build/main.bundle.js"></script>
 </body>
