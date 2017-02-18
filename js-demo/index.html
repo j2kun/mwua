@@ -11,6 +11,8 @@
 </header>
 <div class="content">
     <p>There are four experts, and you get to pick the outcomes of each event. The Multiplicate Weights Update Algorithm will try to find the best expert.</p>
+
+    <h2> Algorithm state</h2>
     <table id="summary">
         <tr class='header'>
         <th>Experts: </th>
@@ -25,13 +27,15 @@
             <td>0</td>
             <td>0</td>
         </tr>
-        <th>MWUA Weights: </th>
+        <th id="weights">MWUA Weights: </th>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
     </table>
+
+    <h2> Rewards </h2>
     <table id="rewards">
         <tr class='header'>
             <th>Experts:</th>
@@ -40,14 +44,13 @@
             <td>Chadwick</td>
             <td>Eve</td>
         </tr>
-        <tr class="chosenRewards">
-        <th id="round0">Round 1: </th>
-            <td><input>1</input></td>
-            <td><input>1</input></td>
-            <td><input>1</input></td>
-            <td><input>1</input></td>
+        <tr class="inputRewards">
+        <th id="round0">Round <span class="roundNumber">1</span>: </th>
+            <td><input></input></td>
+            <td><input></input></td>
+            <td><input></input></td>
+            <td><input></input></td>
         </tr>
-        // Extra rows go here
     </table>
     <h2>For this round I pick: <span id="chosenObject"></span></h2>
     <h2>MWUA's hypothesized best: <span id="mwuaBest"></span></h2>

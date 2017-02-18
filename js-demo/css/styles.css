@@ -24,11 +24,7 @@ header > h1 {
 
 h2 {
     font-size: 22px;
-    margin: 20px 0 0 0;
-}
-
-h2 > .currency {
-    color: #0288D1;
+    margin: 40px 0 10px 10px;
 }
 
 h3 {
@@ -56,7 +52,7 @@ input[type=text] {
 table {
     border-collapse: collapse;
     font-weight: 300;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 th {
@@ -65,14 +61,14 @@ th {
 }
 
 td {
-    text-align: right;
+    text-align: center;
     padding: 0 .5rem;
 }
 
 th,
 td {
     border: solid 1px #EEEEEE !important;
-    padding: 1px 4px;
+    padding: 2px 7px;
 }
 
 label {
