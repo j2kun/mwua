@@ -10,30 +10,39 @@
     <h1>Multiplicative Weights Update Algorithm Demo</h1>
 </header>
 <div class="content">
-    <p>There are four experts, and you get to pick the outcomes of each event. The Multiplicate Weights Update Algorithm will try to find the best expert.</p>
+    <p>There are four experts, and each round they compete to get a reward. You get to pick the rewards each round. The Multiplicate Weights Update Algorithm will follow the advice of an expert in each round, and over time try to perform as well as the best expert.</p>
 
     <h2> Algorithm state</h2>
     <table id="summary">
         <tr class='header'>
-        <th>Experts: </th>
+            <th>Experts: </th>
             <td>Alice</td>
             <td>Bob</td>
             <td>Chadwick</td>
             <td>Eve</td>
         </tr>
-        <tr>
-        <th id="cumulativeRewards">Cumulative rewards: </th>
+        <tr id="cumulativeRewards">
+            <th>Cumulative rewards: </th>
             <td>0</td>
             <td>0</td>
             <td>0</td>
             <td>0</td>
         </tr>
+        <tr id="weights">
+            <th>(Normalized) MWUA Weights <span class="tooltip" title="These weights represent the algorithm's internal belief about the quality of each expert. They double as the probability the algorithm will choose to follow an expert in any given round.">(?)</span>:
+            </th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
         <tr>
-        <th id="weights">MWUA Weights: </th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <th>Learning rate <span class="tooltip" title="The learning rate dictates how strongly the algorithm favors new data. It must be less than 1/2.">(?)</span>:</th>
+            <td><input id="learningRate"></td>
+        </tr>
+        <tr>
+            <th>MWUA cumulative performance</th>
+            <td id="performance"></td>
         </tr>
     </table>
 
@@ -41,21 +50,21 @@
         For round <span class="roundNumber">1</span>, I pick: <span id="chosenObject"></span>
     </h2>
 
-    <h2> Rewards </h2>
+    <h2> Rewards <span class="tooltip" title="Choose the rewards of each expert for the next round.">(?)</span></h2>
     <table id="rewards">
         <tr class='header'>
-        <th>Experts:</th>
-        <td>Alice</td>
-        <td>Bob</td>
-        <td>Chadwick</td>
-        <td>Eve</td>
+            <th>Experts:</th>
+            <td>Alice</td>
+            <td>Bob</td>
+            <td>Chadwick</td>
+            <td>Eve</td>
         </tr>
         <tr id="inputRewards">
-        <th>Round <span class="roundNumber">1</span>: </th>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
-        <td><input></td>
+            <th>Round <span class="roundNumber">1</span>: </th>
+            <td><input></td>
+            <td><input></td>
+            <td><input></td>
+            <td><input></td>
         </tr>
     </table>
     <div>

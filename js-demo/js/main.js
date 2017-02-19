@@ -4,6 +4,15 @@ function sum(arr) {
     return arr.reduce((sum, x) => sum + x);
 }
 
+function normalize(arr) {
+    let out = [];
+    let theSum = sum(arr);
+    for (let val of arr) {
+        out.push(val / theSum);
+    }
+    return out;
+}
+
 // Choose an index of the weights array at random, proportionally to the value
 // at that index.
 function draw(weights) {
@@ -38,15 +47,18 @@ function mwuaStep(objects, weights, chosenObject, chosenRewards, learningRate) {
 global.state = {
     objects: ['Alice', 'Bob', 'Chadwick', 'Eve'],
     weights: [1, 1, 1, 1],
-    learningRate: 0.5,
+    learningRate: 0.2,
     roundRewards: [],
-    cumulativeRewards: [0, 0, 0, 0]
+    cumulativeRewards: [0, 0, 0, 0],
+    performance: 0
 };
 state.chosenObject = selectObject(state.objects, state.weights);
 
 
 function executeRound(chosenRewards) {
     mwuaStep(state.objects, state.weights, state.chosenObject, chosenRewards, state.learningRate);
+    let chosenIndex = state.objects.indexOf(state.chosenObject);
+    state.performance += chosenRewards[chosenIndex];
     state.roundRewards.push(chosenRewards);
     for (let i=0; i < chosenRewards.length; i++) {
         state.cumulativeRewards[i] += chosenRewards[i];
@@ -54,8 +66,6 @@ function executeRound(chosenRewards) {
 }
 
 function renderRewardRow(rewards, index) {
-    console.log(rewards);
-    console.log(index);
     let row = rewards.map(n => '<td>' + n.toString() + '</td>').join('');
     return '<tr>' + 
            '<th> Round <span class="roundNumber">' + (index + 1) + '</span>:</th>' + 
@@ -74,25 +84,47 @@ function renderRewardTable(roundRewards) {
     return [headerRow, rewardRows, inputRow].join('\n');
 }
 
-export function render(state) {
+function render(state) {
     $('#rewards').html(renderRewardTable(state.roundRewards));
     $('input').val('');
     $('#cumulativeRewards td').each(function(index) {
         $( this ).text(state.cumulativeRewards[index]);
     });
-    $('h2 .roundNumber').text(state.roundRewards.length);
+    let normalizedWeights = normalize(state.weights);
+    $('#weights td').each(function(index) {
+        $( this ).text(normalizedWeights[index].toFixed(2));
+    });
+    $('h2 .roundNumber').text(state.roundRewards.length + 1);
     $('#chosenObject').text(state.chosenObject);
-    // TODO: set MWUA weights
+    $('#learningRate').val(state.learningRate);
+    $('#performance').text(state.performance);
+
+    $('input').bind("enterKey", function() {
+        submit();
+    });
+    $('input').keyup(function(e){
+        if(e.keyCode == 13)
+        {
+            $(this).trigger("enterKey");
+        }
+    });
+
+    $("input:text").get(1).focus();
 }
 
-$('#calcBtn').click(function () {
+function submit() {
+    state.learningRate = $('#learningRate').val();
     var chosenRewards = $.makeArray($('#inputRewards input').map(function() {
         return parseFloat($( this ).val()) || 0;
     }));
-    console.log(chosenRewards);
     executeRound(chosenRewards);
     state.chosenObject = selectObject(state.objects, state.weights);
 
+    render(state);
+}
+
+$( document ).ready(function() {
+    $('#calcBtn').click(submit);
     render(state);
 });
 
