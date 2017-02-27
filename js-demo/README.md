@@ -1,7 +1,7 @@
 ## Javascript demo
 
 This subdirectory contains the code for the javascript demo of the
-Multiplicative Weights Update Algorithm. You can try it out [here]().
+Multiplicative Weights Update Algorithm. You can try it out [here](j2kun.github.io/mwua/index.html).
 
 ### Building from scratch
 
