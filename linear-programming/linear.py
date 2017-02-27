@@ -136,4 +136,7 @@ if __name__ == "__main__":
     b = numpy.array([5, 6])
     c = numpy.array([1, 2, 1])
 
-    print(solve(A, b, c))
+    x = solve(A, b, c)
+    print(x)
+    print(c.dot(x))
+    print(A.dot(x) - b)
