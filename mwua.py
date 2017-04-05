@@ -22,7 +22,7 @@ def MWUA(objects, observeOutcome, reward, learningRate, numRounds):
     weights = [1] * len(objects)
     cumulativeReward = 0
 
-    for t in numRounds:
+    for t in range(numRounds):
         chosenObjectIndex = draw(weights)
         chosenObject = objects[chosenObjectIndex]
 
